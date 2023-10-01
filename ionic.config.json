@@ -1,0 +1,7 @@
+{
+  "name": "lista_tareas 2.0",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
