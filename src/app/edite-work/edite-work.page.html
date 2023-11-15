@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Modificacion tarea</ion-title>
+    <ion-icon  slot="end" name="close" size="large" class="ion-padding"  (click)="descartar()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-textarea placeholder="Escribir una tarea"  value="" [(ngModel)]="editTareaObjeto.tareas"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prioridad</ion-label>
+      <ion-item>
+        <ion-select multiple="false" placeholder="Seleccionar prioridad" [(ngModel)]="editTareaObjeto.prioridad" >
+          <ion-select-option value="baja">Baja</ion-select-option>
+          <ion-select-option value="media">Media</ion-select-option>
+          <ion-select-option value="alta">Alta</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="calendar-outLine"></ion-icon>
+      <ion-label>Fecha actividad</ion-label>
+      <ion-item>
+        <ion-datetime  [(ngModel)]="editTareaObjeto.fecha" display-format="DD.MM.YYYY HH:mm"></ion-datetime>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="pricetag-outLine"></ion-icon>
+      <ion-label >Categoria</ion-label>
+      <span > {{editTareaObjeto.categoria}}</span>
+    </ion-item>
+    <ion-item>
+      
+        <!-- ===== Directiva *ngFor ====== -->
+
+      <ion-chip *ngFor="let categoria of categorias; let i =index " (click)="categoriaSeleccionada(i)" >
+        <ion-label>{{categoria}}</ion-label>
+      </ion-chip>
+    </ion-item>
+    <ion-button  expand="block" fill="clear" shape="round" (click)="saveChanges(editTareaObjeto)">
+      Guardar cambios
+    </ion-button>
+  </ion-card>
+
+</ion-content>

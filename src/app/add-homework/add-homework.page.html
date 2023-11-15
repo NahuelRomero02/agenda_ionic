@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Agregar tarea</ion-title>
+    <ion-icon  slot="end" name="close" size="large" class="ion-padding"  (click)="descartar()"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-textarea placeholder="Escribir una tarea"  [(ngModel)]="nombreTarea2" required="true"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Prioridad</ion-label>
+      <ion-item>
+        <ion-select multiple="false" placeholder="Seleccionar prioridad" [(ngModel)]="prioridadTarea2" required="true">
+          <ion-select-option value="baja">Baja</ion-select-option>
+          <ion-select-option value="media">Media</ion-select-option>
+          <ion-select-option value="alta">Alta</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="calendar-outLine"></ion-icon>
+      <ion-label>Fecha actividad</ion-label>
+      <ion-item>
+        <ion-datetime  [(ngModel)]="fechaTarea2" display-format="DD.MM.YYYY HH:mm" required="true"></ion-datetime>
+      </ion-item>
+    </ion-item>
+    <ion-item>
+      <ion-icon slot="start" name="pricetag-outLine"></ion-icon>
+      <ion-label >Categoria</ion-label>
+      <span> {{categoriaTarea2}}</span>
+    </ion-item>
+    <ion-item>
+      
+        <!-- ===== Directiva *ngFor ====== -->
+
+      <ion-chip *ngFor="let categoria of categorias; let i =index " (click)="categoriaSeleccionada(i)" required="true">
+        <ion-label>{{categoria}}</ion-label>
+
+      </ion-chip>
+    </ion-item>
+    <ion-button (click)="createHomework()" (click)="agregarTarea()" expand="block" fill="clear" shape="round">
+      Agregar tarea
+    </ion-button>
+  </ion-card>
+
+</ion-content>
